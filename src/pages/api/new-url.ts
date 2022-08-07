@@ -1,7 +1,7 @@
 
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { prisma } from "../../lib/prisma";
+import { isSlugAvailable, setUrl } from "../../lib/redis";
 
 const post = async (req: NextApiRequest, res: NextApiResponse) => {
   const body = req.body;
@@ -14,12 +14,17 @@ const post = async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
-  const data = await prisma.url.create({
-    data: {
-      slug: body.slug,
-      redirect: body.redirect,
-    }
-  })
+  const isValidSlug = await isSlugAvailable(body.slug);
+
+  if (!isValidSlug) {
+    res.statusCode = 401;
+
+    res.send(JSON.stringify({ message: "slug already in use" }));
+
+    return;
+  }
+
+  const data = await setUrl(body.slug, body.redirect);
 
   if (!data) {
     res.statusCode = 404;
