@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { prisma } from "../../../lib/prisma";
+import { getUrl } from "../../../lib/redis";
 
 const get = async (req: NextApiRequest, res: NextApiResponse) => {
   const slug = req.query["slug"];
@@ -13,11 +13,7 @@ const get = async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
-  const data = await prisma.url.findUnique({
-    where: {
-      slug
-    }
-  })
+  const data = await getUrl(slug)
 
   if (!data) {
     res.statusCode = 404;
