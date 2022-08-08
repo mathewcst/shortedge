@@ -30,7 +30,7 @@ const get = async (req: NextApiRequest, res: NextApiResponse) => {
     "s-maxage=1000000000, stale-while-revalidate"
   );
 
-  return res.json(data);
+  return res.json({ slug, redirect: data });
 };
 
 export default get
