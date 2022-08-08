@@ -8,7 +8,7 @@ const get = async (req: NextApiRequest, res: NextApiResponse) => {
   if (!slug || typeof slug !== "string") {
     res.statusCode = 404;
 
-    res.send(JSON.stringify({ message: "pls use with a slug" }));
+    res.send(JSON.stringify({ message: "You must provide a slug" }));
 
     return;
   }
@@ -18,7 +18,7 @@ const get = async (req: NextApiRequest, res: NextApiResponse) => {
   if (!data) {
     res.statusCode = 404;
 
-    res.send(JSON.stringify({ message: "slug not found" }));
+    res.send(JSON.stringify({ message: "Slug not found" }));
 
     return;
   }

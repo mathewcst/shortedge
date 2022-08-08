@@ -9,7 +9,7 @@ const post = async (req: NextApiRequest, res: NextApiResponse) => {
   if (!body || typeof body.slug !== "string") {
     res.statusCode = 404;
 
-    res.send(JSON.stringify({ message: "pls use with a slug" }));
+    res.send(JSON.stringify({ message: "You must provide a slug" }));
 
     return;
   }
@@ -19,7 +19,7 @@ const post = async (req: NextApiRequest, res: NextApiResponse) => {
   if (!isValidSlug) {
     res.statusCode = 401;
 
-    res.send(JSON.stringify({ message: "slug already in use" }));
+    res.send(JSON.stringify({ message: "Slug already in use" }));
 
     return;
   }
@@ -29,12 +29,10 @@ const post = async (req: NextApiRequest, res: NextApiResponse) => {
   if (!data) {
     res.statusCode = 404;
 
-    res.send(JSON.stringify({ message: "slug not found" }));
+    res.send(JSON.stringify({ message: "Slug not found" }));
 
     return;
   }
-
-
 
   return res.json(data);
 };

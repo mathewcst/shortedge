@@ -3,7 +3,7 @@ import type { GetServerSideProps, NextPage } from 'next'
 export const getServerSideProps: GetServerSideProps = async () => {
   return {
     redirect: {
-      destination: 'https://www.lostark.party',
+      destination: process.env.BASE_APP_URL!,
       permanent: false,
     },
   }
@@ -12,7 +12,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 const Home: NextPage = () => {
   return (
     <div>
-      <p>Something</p>
+      <p>You shouldnt see this</p>
     </div>
   )
 }
