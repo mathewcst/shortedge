@@ -5,6 +5,11 @@ import { isSlugAvailable, setUrl } from "../../lib/redis";
 
 const post = async (req: NextApiRequest, res: NextApiResponse) => {
   const body = req.body;
+  const { host } = req.headers;
+
+  if (!process.env.BASE_APP_URL?.includes(host!)) {
+    return res.status(401).send(JSON.stringify({ error: "Unauthorized" }));
+  }
 
   if (!body || typeof body.slug !== "string") {
     res.statusCode = 404;
