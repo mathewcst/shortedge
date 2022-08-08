@@ -47,3 +47,7 @@ npm run dev
 # or
 yarn dev
 ```
+
+## Credits
+
+This project is based on [joltik](https://github.com/TheoBr/joltik) by [Theo](https://github.com/TheoBr)
