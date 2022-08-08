@@ -5,13 +5,15 @@ const nextConfig = {
   experimental: {
     runtime: 'experimental-edge',
   },
-  redirects: [
-    {
-      source: '/',
-      destination: 'https://www.lostark.party',
-      permanent: true,
-    },
-  ],
+  redirects: async () => {
+    return [
+      {
+        source: '/',
+        destination: 'https://www.lostark.party',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig
