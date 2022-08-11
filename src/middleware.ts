@@ -14,6 +14,7 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
   if (data?.redirect) {
     return NextResponse.redirect(data.redirect);
   }
+
 }
 
 export const config = {

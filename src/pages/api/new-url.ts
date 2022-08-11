@@ -1,13 +1,21 @@
+import NextCors from 'nextjs-cors'
 
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { isSlugAvailable, setUrl } from "../../lib/redis";
 
-const post = async (req: NextApiRequest, res: NextApiResponse) => {
-  const body = req.body;
-  const { host } = req.headers;
 
-  if (!process.env.BASE_APP_URL?.includes(host!)) {
+const post = async (req: NextApiRequest, res: NextApiResponse) => {
+
+  await NextCors(req, res, {
+    methods: ['POST'],
+    origin: '*'
+  })
+
+  const body = req.body;
+  const { origin } = req.headers;
+
+  if (!process.env.BASE_APP_URL?.includes(origin!)) {
     return res.status(401).send(JSON.stringify({ error: "Unauthorized" }));
   }
 
