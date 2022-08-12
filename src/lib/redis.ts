@@ -15,6 +15,10 @@ export async function getUrl(slug: string): Promise<string> {
   return redirect;
 }
 
+export async function deleteUrl(slug: string): Promise<void> {
+  await redis.del(`short/${slug}`)
+}
+
 
 export async function isSlugAvailable(slug: string): Promise<boolean> {
   const redirect = await redis.get(`short/${slug}`) as string
