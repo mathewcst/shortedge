@@ -46,6 +46,9 @@ const post = async (req: NextApiRequest, res: NextApiResponse) => {
 
     return;
   }
+  res.setHeader("Content-Type", "application/json");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
 
   return res.json(data);
 };
