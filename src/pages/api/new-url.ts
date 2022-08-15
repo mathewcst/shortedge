@@ -8,8 +8,9 @@ import { isSlugAvailable, setUrl } from "../../lib/redis";
 const post = async (req: NextApiRequest, res: NextApiResponse) => {
 
   await NextCors(req, res, {
-    methods: ['POST'],
-    origin: '*'
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    origin: '*',
+
   })
 
   const body = req.body;
