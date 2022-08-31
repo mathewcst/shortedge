@@ -250,6 +250,11 @@
     "@typescript-eslint/types" "5.32.0"
     eslint-visitor-keys "^3.3.0"
 
+"@upstash/ratelimit@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@upstash/ratelimit/-/ratelimit-0.1.5.tgz#345fe6e21c047213564c9abfc125ef92a60834c6"
+  integrity sha512-v0zq3Xpq42HQBvXDvm0C4djYvKC5TjHG29uCpbIQcOw0znJNroHewI8y4Yk4tBeEF1rvj2RjDkFihjCp6uTExQ==
+
 "@upstash/redis@^1.11.0":
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/@upstash/redis/-/redis-1.11.0.tgz#10bcf269304b37461c8c85dda31bf4f3eb245690"
